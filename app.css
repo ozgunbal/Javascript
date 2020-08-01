@@ -167,6 +167,19 @@ select {
     cursor: pointer;
 }
 
+#info-graph-btn {
+    background: #ccc;
+    padding: 0.8em;
+    margin: 1.2em auto;
+    transition: ease 0.3s all;
+}
+
+#info-graph-btn:hover {
+    background: #777;
+    color: #fff;
+    cursor: pointer;
+}
+
 /* Footer */
 .fine-print {
     display: block;

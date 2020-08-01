@@ -54,7 +54,7 @@ To complete this project, your backend code must:
 There's no extra credit in this course, but if you plan to use this project in your portfolio, you may enjoy taking this project further. 
 
 Some ideas might be to validate the form data to ensure the data is acceptable and complete.
-- [ ] Allow the user to generate a new infographic.
+- [X] Allow the user to generate a new infographic.
 - [ ] Move the tile colors from CSS to JS for more control.
 - [X] Randomize the order of the tiles while keeping the human in the middle.
 - [ ] Create a hover state on the tiles that displays the rest of the species statistics.

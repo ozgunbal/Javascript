@@ -71,6 +71,7 @@ function Human(name, feet, inches, weight, diet) {
 // HTML Nodes
 const form = document.querySelector("#dino-compare");
 const grid = document.querySelector("#grid");
+const newInfographButton = document.querySelector("#info-graph-btn");
 const formFieldIds = ["#name", "#feet", "#inches", "#weight", "#diet"];
 
 const TILE_TYPES = {
@@ -203,6 +204,7 @@ const main = async () => {
   generateTiles(dinos, human);
   // Remove form from screen
   form.classList.add("hidden");
+  newInfographButton.classList.remove('hidden');
 };
 
 // On button click, prepare and display infographic
@@ -210,3 +212,22 @@ form.addEventListener("submit", function formHandler(evt) {
   evt.preventDefault();
   main();
 });
+
+// Clear form values before re-appear
+const clearForm = () => {
+  const inputs = formFieldIds.map((id) => document.querySelector(id))
+  inputs.forEach(input => {
+    input.value = "";
+  });
+  inputs[inputs.length - 1].value = "herbavor";
+};
+
+//On new infographic button click, reveal empty form and hide grid
+newInfographButton.addEventListener('click', function newInfographicClick () {
+  form.classList.remove("hidden");
+  newInfographButton.classList.add('hidden');
+  clearForm();
+  Array.from(grid.childNodes).forEach(node => {
+    grid.removeChild(node);
+  });
+})
