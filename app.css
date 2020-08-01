@@ -172,3 +172,7 @@ select {
     display: block;
     font-size: 0.7em;
 }
+
+.hidden {
+    display: none;
+}
