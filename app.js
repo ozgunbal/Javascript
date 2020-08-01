@@ -20,10 +20,10 @@ function Dino(species, weight, height, diet, where, when, fact) {
 }
 
 /**
-* @description Decides dino is heavier than human (Dino Compare Method 1)
-* @param {object} human Human Object
-* @returns {string} Comparison result
-*/
+ * @description Decides dino is heavier than human (Dino Compare Method 1)
+ * @param {object} human Human Object
+ * @returns {string} Comparison result
+ */
 Dino.prototype.hasHeaiverThan = function (human) {
   return this.weight > human.weight
     ? "Heavier than human"
@@ -31,10 +31,10 @@ Dino.prototype.hasHeaiverThan = function (human) {
 };
 
 /**
-* @description Decides dino is taller than human (Dino Compare Method 2)
-* @param {object} human Human Object
-* @returns {string} Comparison result
-*/
+ * @description Decides dino is taller than human (Dino Compare Method 2)
+ * @param {object} human Human Object
+ * @returns {string} Comparison result
+ */
 Dino.prototype.hasTallerThan = function (human) {
   return this.height > human.height
     ? "Taller than human"
@@ -42,10 +42,10 @@ Dino.prototype.hasTallerThan = function (human) {
 };
 
 /**
-* @description Decides dino has same diet with human (Dino Compare Method 3)
-* @param {object} human Human Object
-* @returns {string} Comparison result
-*/
+ * @description Decides dino has same diet with human (Dino Compare Method 3)
+ * @param {object} human Human Object
+ * @returns {string} Comparison result
+ */
 Dino.prototype.hasSameDiet = function (human) {
   return this.diet === human.diet
     ? "Same Diet with human"
@@ -63,7 +63,8 @@ Dino.prototype.hasSameDiet = function (human) {
  */
 function Human(name, feet, inches, weight, diet) {
   this.name = name;
-  (this.species = "Human"), (this.height = feet * 12 + inches);
+  this.species = "Human";
+  this.height = feet * 12 + inches;
   this.weight = weight;
   this.diet = diet;
 }
@@ -129,10 +130,10 @@ const generateTile = (obj, human) => {
 };
 
 /**
-* @description Shuffles order of the items in the array
-* @param {array} array
-* @returns {array} Shuffed array
-*/
+ * @description Shuffles order of the items in the array
+ * @param {array} array
+ * @returns {array} Shuffed array
+ */
 const shuffleArray = (array) => {
   const newArray = [...array];
   for (let i = newArray.length - 1; i > 0; i--) {
@@ -140,14 +141,14 @@ const shuffleArray = (array) => {
     [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
   }
   return newArray;
-}
+};
 
 /**
-* @description Gets random fact about dino
-* @param {object} dino
-* @param {object} human
-* @returns {string} fact descriptino
-*/
+ * @description Gets random fact about dino
+ * @param {object} dino
+ * @param {object} human
+ * @returns {string} fact descriptino
+ */
 const getRandomFact = (dino, human) => {
   const luckyNumber = Math.floor(Math.random() * 6);
   switch (luckyNumber) {
@@ -168,10 +169,10 @@ const getRandomFact = (dino, human) => {
 };
 
 /**
-* @description Generates all tiles add to DOM
-* @param {object[]} dinos Array of Dino Object
-* @param {object} human
-*/
+ * @description Generates all tiles add to DOM
+ * @param {object[]} dinos Array of Dino Object
+ * @param {object} human
+ */
 const generateTiles = (dinos, human) => {
   // Generate Tiles for each Dino in Array
   const dinoTiles = shuffleArray(dinos).map((dino) =>
@@ -197,14 +198,14 @@ const main = async () => {
     const [name, feet, inches, weight, diet] = formFieldIds
       .map((id) => document.querySelector(id))
       .map((field) => field.value);
-      console.log(name, +feet, +inches, +weight, diet);
+    console.log(name, +feet, +inches, +weight, diet);
     return new Human(name, +feet, +inches, +weight, diet);
   })();
 
   generateTiles(dinos, human);
   // Remove form from screen
   form.classList.add("hidden");
-  newInfographButton.classList.remove('hidden');
+  newInfographButton.classList.remove("hidden");
 };
 
 // On button click, prepare and display infographic
@@ -215,19 +216,19 @@ form.addEventListener("submit", function formHandler(evt) {
 
 // Clear form values before re-appear
 const clearForm = () => {
-  const inputs = formFieldIds.map((id) => document.querySelector(id))
-  inputs.forEach(input => {
+  const inputs = formFieldIds.map((id) => document.querySelector(id));
+  inputs.forEach((input) => {
     input.value = "";
   });
   inputs[inputs.length - 1].value = "herbavor";
 };
 
 //On new infographic button click, reveal empty form and hide grid
-newInfographButton.addEventListener('click', function newInfographicClick () {
+newInfographButton.addEventListener("click", function newInfographicClick() {
   form.classList.remove("hidden");
-  newInfographButton.classList.add('hidden');
+  newInfographButton.classList.add("hidden");
   clearForm();
-  Array.from(grid.childNodes).forEach(node => {
+  Array.from(grid.childNodes).forEach((node) => {
     grid.removeChild(node);
   });
-})
+});
